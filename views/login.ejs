@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>UrlShortener - Login</title>
+    </head>
+    <body>
+        <form method="post" action="/">
+            <h1>URL SHORTENER</h1>
+        <label>email</label>
+        <input type="text" name="email"/>
+        <br/>
+        <label>password</label>
+        <input type="text" name="password"/>
+        <br/>
+        <button type="submit">Login</button>
+        </form> 
+        <% if (locals.error) { %>
+            <p><%= error %></p>
+            <% } %>
+    </body>
+</html>

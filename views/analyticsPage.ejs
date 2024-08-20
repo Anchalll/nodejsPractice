@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>UrlShortener - Home</title>
+    </head>
+    <body>
+       <table>
+        <tr><th>URL</th><th>short URL</th><th>clicks</th></tr>
+        <% data.forEach(d => { %>
+            <tr><td><%= d.redirectUrl %></td><td><%= d.shortId %></td><td><%= d.visitHistory.length %></td></tr>
+        <% })  %>
+       </table>
+    </body>
+</html>

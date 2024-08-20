@@ -1,0 +1,5 @@
+
+ request url - / and request method is GET
+ request url - /favicon.ico and request method is GET
+ request url - /about and request method is GET
+ request url - /favicon.ico and request method is GET

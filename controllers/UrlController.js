@@ -2,7 +2,7 @@ const {nanoid} = require("nanoid")
 const {URL} = require("../models/url")
 const {USER} = require("../models/user")
 const { v4: uuidv4 } = require('uuid');
-const {setUserToSession, getUserFromSession} = require("../Services/auth")
+const {verifyUserToken, GenerateUserToken} = require("../Services/auth")
 
 async function handleHomePage(req,res) {
     res.render('home')
@@ -65,9 +65,8 @@ async function handlePostLogin(req,res) {
     const {email, password} = req.body;
     const user = await USER.findOne({email, password})
     if(user){
-      const sessionId = uuidv4();
-      setUserToSession(sessionId,user)
-      res.cookie("Id",sessionId);
+      const token = GenerateUserToken(user)
+      res.cookie("Id",token);
       res.redirect("/home")
     }
     else{

@@ -66,8 +66,7 @@ async function handlePostLogin(req,res) {
     const user = await USER.findOne({email, password})
     if(user){
       const token = GenerateUserToken(user)
-      res.cookie("Id",token);
-      res.redirect("/home")
+      res.json({token});
     }
     else{
         res.render("login.ejs", {error : "Invalid email / Password"})

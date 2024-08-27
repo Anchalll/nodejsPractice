@@ -1,7 +1,9 @@
 const { verifyUserToken } = require("../Services/auth");
 
 async function AllowLoggedInUserOnly(req,res,next) {
-    const token = req.cookies?.Id;
+    const id = req.headers["authorization"];
+    console.log(id);
+    const token = id.split("Bearer ")[1];
     if(!token){
         return res.redirect("/")
     }

@@ -42,6 +42,11 @@ async function handleGetAnalytics(req,res) {
     res.render("analyticsPage",{data : doc})
 }
 
+async function handleGetAnalyticsAdmin(req,res) {    
+    const doc = await URL.find({})
+    res.render("analyticsPage",{data : doc})
+}
+
 async function handleGetSignUp(req,res) {
     res.render("signUp.ejs")
 }
@@ -82,4 +87,5 @@ module.exports = {handleGenerateShortUrl,
     handleGetSignUp,
     handlePostSignUp,
     handlePostLogin,
-    handleGetLogin};
+    handleGetLogin,
+    handleGetAnalyticsAdmin};

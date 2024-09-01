@@ -2,7 +2,9 @@ const {nanoid} = require("nanoid")
 const {URL} = require("../models/url")
 const {USER} = require("../models/user")
 const { v4: uuidv4 } = require('uuid');
-const {verifyUserToken, GenerateUserToken} = require("../Services/auth")
+const {verifyUserToken, GenerateUserToken} = require("../Services/auth");
+const { render } = require("ejs");
+const multer = require("multer");
 
 async function handleHomePage(req,res) {
     res.render('home')
@@ -80,6 +82,16 @@ async function handlePostLogin(req,res) {
 
 }
 
+async function handleGetUploadFile(req,res) {
+  return res.render("uploadFile.ejs")
+}
+
+async function handlePostUploadFile(req,res) {
+    console.log(req.body)
+    console.log(req.file)
+    
+}
+
 module.exports = {handleGenerateShortUrl,
     handleRedirectToUrl,
     handleGetAnalytics,
@@ -88,4 +100,6 @@ module.exports = {handleGenerateShortUrl,
     handlePostSignUp,
     handlePostLogin,
     handleGetLogin,
-    handleGetAnalyticsAdmin};
+    handleGetAnalyticsAdmin,
+    handleGetUploadFile,
+    handlePostUploadFile};
